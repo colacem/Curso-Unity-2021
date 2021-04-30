@@ -130,3 +130,5 @@ MonoBehaviour:
   torqueValor: 10
   positionX: 4
   positionY: -5
+  pointValue: 3
+  explosion: {fileID: 625621707174889904, guid: ef43e5aef41c142fb85a7658a397dc75, type: 3}

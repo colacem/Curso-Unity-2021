@@ -6,13 +6,19 @@ public class Target : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     public float fuerzaMinima=12, fuerzaMaxima=16, torqueValor=10, positionX=4, positionY=-5;
-
+    [Range(-100,50)]
+    public int pointValue;
+    private GameManager gameManager;
+    public ParticleSystem explosion;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.AddForce(RandomForce(),ForceMode.Impulse);
         _rigidbody.AddTorque(RandomTorque(),RandomTorque(),RandomTorque(),ForceMode.Impulse);
         transform.position= RandomSpamPos();
+        //dos formas de buscar el script de gameManager del GameObject GameManager
+        //gameManager=GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager=GameObject.FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -49,6 +55,8 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown() {
         Destroy(gameObject);
+        Instantiate(explosion, transform.position,explosion.transform.rotation);
+        gameManager.UpdateScore(pointValue);
     }
 
     /// <summary>
@@ -59,6 +67,10 @@ public class Target : MonoBehaviour
         if (other.gameObject.CompareTag("KillZone"))
         {
             Destroy(gameObject);
+            if (pointValue > 0)
+            {
+                gameManager.UpdateScore(-10);
+            }
         }
     }
 }

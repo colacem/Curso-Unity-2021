@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6e46bfea6530c634aa100ca6892a35c3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Ninjos
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 84c12d0d80c31db4ba8c07b05d242d44, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
