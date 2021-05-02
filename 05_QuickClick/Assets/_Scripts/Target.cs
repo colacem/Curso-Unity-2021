@@ -53,10 +53,13 @@ public class Target : MonoBehaviour
         return new Vector3(Random.Range(-positionX,positionX),positionY,1);
     }
 
-    private void OnMouseDown() {
-        Destroy(gameObject);
-        Instantiate(explosion, transform.position,explosion.transform.rotation);
-        gameManager.UpdateScore(pointValue);
+    private void OnMouseOver() {
+        if (gameManager.gameState==GameManager.GameState.inGame)
+        {
+            Destroy(gameObject);
+            Instantiate(explosion, transform.position,explosion.transform.rotation);
+            gameManager.UpdateScore(pointValue);
+        }
     }
 
     /// <summary>
@@ -67,10 +70,12 @@ public class Target : MonoBehaviour
         if (other.gameObject.CompareTag("KillZone"))
         {
             Destroy(gameObject);
-            if (pointValue > 0)
+            if (gameObject.CompareTag("Good"))
             {
-                gameManager.UpdateScore(-10);
+                //gameManager.UpdateScore(-10);
+                gameManager.GameOver();
             }
+            
         }
     }
 }
